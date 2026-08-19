@@ -294,7 +294,7 @@
 
     <!-- Modal -->
     <div class="modal-overlay" id="modal-overlay" aria-hidden="true"></div>
-    <dialog class="modal" id="add-topic-modal" aria-label="Добавить новую тему" role="dialog">
+    <div class="modal" id="add-topic-modal" aria-label="Добавить новую тему" role="dialog">
         <h3 class="modal__title">Новая тема</h3>
         <input class="modal__input" type="text" id="topic-title-input" placeholder="Название темы..." autocomplete="off" aria-label="Название темы">
         <div class="modal__chips" id="modal-category-chips" role="group" aria-label="Выберите категорию"></div>
@@ -302,7 +302,7 @@
             <button class="btn btn--ghost" onclick="closeModal()" type="button">Отмена</button>
             <button class="btn btn--primary" onclick="saveTopic()" type="button">Сохранить</button>
         </div>
-    </dialog>
+    </div>
 
     <!-- Toast -->
     <div class="toast" id="toast" role="status" aria-live="polite"></div>

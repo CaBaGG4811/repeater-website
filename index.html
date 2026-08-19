@@ -1,204 +1,290 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Повторятор</title>
+    <meta name="description" content="Повторятор — приложение для интервального повторения. Эффективно запоминайте информацию с методом SM-2.">
+    <meta name="theme-color" content="#F5F0EB">
+    <title>Повторятор — Интервальное повторение</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app">
-        <aside class="sidebar">
-            <div class="sidebar-top">
-                <div class="logo">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#1a1a1a"/><circle cx="10" cy="10" r="3.5" fill="#F5E6B8"/></svg>
+    <div class="app" role="application" aria-label="Повторятор — приложение для обучения">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" role="navigation" aria-label="Основная навигация">
+            <div class="sidebar__top">
+                <div class="sidebar__logo" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="10" fill="currentColor"/>
+                        <circle cx="10" cy="10" r="3.5" fill="#F5E6B8"/>
+                    </svg>
                 </div>
-                <div class="sidebar-nav">
-                    <button class="side-btn active" data-screen="dashboard" title="Главная">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <nav class="sidebar__nav" aria-label="Навигация по разделам">
+                    <button class="sidebar__btn sidebar__btn--active" data-screen="dashboard" aria-label="Главная" title="Главная">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     </button>
-                    <button class="side-btn" data-screen="topics" title="Темы">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+                    <button class="sidebar__btn" data-screen="topics" aria-label="Мои темы" title="Мои темы">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
                     </button>
-                    <button class="side-btn" data-screen="posts" title="Обучение">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                    <button class="sidebar__btn" data-screen="posts" aria-label="Обучение" title="Обучение">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
                     </button>
-                    <button class="side-btn" data-screen="stats" title="Статистика">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    <button class="sidebar__btn" data-screen="stats" aria-label="Статистика" title="Статистика">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
                     </button>
-                </div>
+                </nav>
             </div>
-            <div class="sidebar-bottom">
-                <div class="avatar">S</div>
-                <button class="side-btn-settings" data-screen="settings" title="Настройки">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <div class="sidebar__bottom">
+                <div class="sidebar__avatar" aria-label="Профиль пользователя">S</div>
+                <button class="sidebar__settings" data-screen="settings" aria-label="Настройки" title="Настройки">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
                 </button>
             </div>
         </aside>
 
-        <main class="main">
-            <div class="scroll-area">
+        <!-- Main Content -->
+        <main class="main" role="main">
+            <div class="main__scroll" id="scroll-area">
 
-                <section id="screen-dashboard" class="screen active">
-                    <div class="dash-top">
-                        <div class="dash-top-left">
-                            <h1 class="greeting" id="greeting">Привет!</h1>
-                            <p class="greeting-sub">Давай посмотрим на твой прогресс сегодня</p>
+                <!-- Dashboard -->
+                <section id="screen-dashboard" class="screen screen--active" aria-label="Главная панель">
+                    <header class="dash-header">
+                        <div class="dash-header__left">
+                            <h1 class="dash-header__greeting" id="greeting">Привет!</h1>
+                            <p class="dash-header__subtitle">Давай посмотрим на твой прогресс сегодня</p>
                         </div>
-                        <div class="dash-top-right">
-                            <div class="search-box">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                                <input type="text" placeholder="Поиск тем..." id="search-input" oninput="filterBySearch(this.value)">
+                        <div class="dash-header__right">
+                            <div class="search" role="search">
+                                <svg class="search__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                <input class="search__input" type="search" placeholder="Поиск тем..." id="search-input" aria-label="Поиск тем" autocomplete="off">
                             </div>
-                            <button class="btn-primary" onclick="openAddTopicDialog()">+ Новая тема</button>
+                            <button class="btn btn--primary" onclick="openAddTopicDialog()" aria-label="Добавить новую тему">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                Новая тема
+                            </button>
                         </div>
-                    </div>
+                    </header>
 
                     <div class="dash-grid">
-                        <div class="widget widget-bubbles" id="widget-bubbles">
-                            <div class="widget-label">
-                                <div class="widget-label-title">Прогресс обучения</div>
-                                <div class="widget-label-sub">Результаты за сегодня</div>
+                        <!-- Bubbles Widget -->
+                        <article class="widget widget--bubbles reveal" id="widget-bubbles">
+                            <div class="widget__header">
+                                <h2 class="widget__title">Прогресс обучения</h2>
+                                <p class="widget__subtitle">Результаты за сегодня</p>
                             </div>
-                            <div class="bubbles-area" id="bubbles-area"></div>
-                            <div class="bubble-legend" id="bubble-legend"></div>
-                        </div>
+                            <div class="bubbles" id="bubbles-area" aria-live="polite"></div>
+                            <div class="bubbles__legend" id="bubble-legend" aria-label="Легенда графика"></div>
+                        </article>
 
-                        <div class="widget widget-cal" id="widget-cal">
-                            <div class="cal-head">
-                                <span class="cal-title">Календарь повторений</span>
-                                <span class="cal-month" id="cal-month"></span>
+                        <!-- Calendar Widget -->
+                        <article class="widget widget--calendar reveal" id="widget-cal" aria-label="Календарь повторений">
+                            <div class="calendar__header">
+                                <h2 class="calendar__title">Календарь</h2>
+                                <span class="calendar__month" id="cal-month" aria-live="polite"></span>
                             </div>
-                            <div class="cal-grid" id="cal-grid"></div>
-                            <div class="cal-legend">
-                                <span class="cl"><span class="cd cd-today"></span>Сегодня</span>
-                                <span class="cl"><span class="cd cd-done"></span>Повторено</span>
-                                <span class="cl"><span class="cd cd-due"></span>Нужно</span>
+                            <div class="calendar__grid" id="cal-grid" role="grid" aria-label="Календарь на текущий месяц"></div>
+                            <div class="calendar__legend">
+                                <span class="calendar__legend-item"><span class="calendar__dot calendar__dot--today" aria-hidden="true"></span>Сегодня</span>
+                                <span class="calendar__legend-item"><span class="calendar__dot calendar__dot--done" aria-hidden="true"></span>Повторено</span>
+                                <span class="calendar__legend-item"><span class="calendar__dot calendar__dot--due" aria-hidden="true"></span>Нужно</span>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="widget widget-steps">
-                            <div class="steps-left">
-                                <div class="steps-title">Темы на сегодня</div>
-                                <div class="steps-sub">Повтори все запланированные</div>
-                                <div class="steps-count">
-                                    <span class="steps-done" id="steps-done">0</span>
-                                    <span class="steps-sep">/</span>
-                                    <span class="steps-total" id="steps-total">0</span>
+                        <!-- Steps Widget -->
+                        <article class="widget widget--steps reveal">
+                            <div class="steps__info">
+                                <h2 class="steps__title">Темы на сегодня</h2>
+                                <p class="steps__subtitle">Повтори все запланированные</p>
+                                <div class="steps__count" aria-live="polite">
+                                    <span class="steps__done" id="steps-done">0</span>
+                                    <span class="steps__separator">/</span>
+                                    <span class="steps__total" id="steps-total">0</span>
                                 </div>
                             </div>
-                            <div class="steps-right">
-                                <svg class="ring-svg" viewBox="0 0 100 100">
-                                    <circle cx="50" cy="50" r="42" fill="none" stroke="#f0ebe3" stroke-width="7"/>
-                                    <circle cx="50" cy="50" r="42" fill="none" stroke="#FF6B6B" stroke-width="7" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="263.9" id="ring-progress" transform="rotate(-90 50 50)"/>
+                            <div class="steps__ring">
+                                <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+                                    <circle class="ring__track" cx="50" cy="50" r="42" fill="none" stroke-width="7"/>
+                                    <circle class="ring__progress" cx="50" cy="50" r="42" fill="none" stroke-width="7" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="263.9" id="ring-progress" transform="rotate(-90 50 50)"/>
                                 </svg>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="widget widget-habits">
-                            <div class="habits-head">
-                                <span class="habits-title">Мои темы</span>
-                                <button class="btn-add-sm" onclick="openAddTopicDialog()">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        <!-- Habits Widget -->
+                        <aside class="widget widget--habits reveal" aria-label="Список тем">
+                            <div class="habits__header">
+                                <h2 class="habits__title">Мои темы</h2>
+                                <button class="btn btn--add" onclick="openAddTopicDialog()" aria-label="Добавить тему">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                                     Добавить
                                 </button>
                             </div>
-                            <div class="habits-list" id="habits-list"></div>
-                        </div>
+                            <div class="habits__list" id="habits-list" role="list"></div>
+                        </aside>
 
-                        <div class="widget widget-weekly" id="widget-weekly">
-                            <div class="weekly-title">Активность за неделю</div>
-                            <div class="weekly-bars" id="weekly-bars"></div>
-                        </div>
+                        <!-- Weekly Activity -->
+                        <article class="widget widget--weekly reveal" aria-label="Активность за неделю">
+                            <h2 class="widget__title">Активность за неделю</h2>
+                            <div class="weekly" id="weekly-bars" aria-live="polite"></div>
+                        </article>
 
-                        <div class="widget widget-streak">
-                            <div class="streak-val" id="streak-val">0</div>
-                            <div class="streak-label">дней подряд</div>
-                            <div class="streak-days" id="streak-days"></div>
-                        </div>
+                        <!-- Streak -->
+                        <article class="widget widget--streak reveal" aria-label="Серия дней подряд">
+                            <div class="streak__value" id="streak-val" aria-live="polite">0</div>
+                            <div class="streak__label">дней подряд</div>
+                            <div class="streak__days" id="streak-days" role="list" aria-label="Дни недели"></div>
+                        </article>
 
-                        <div class="widget widget-actions">
-                            <div class="actions-title">Быстрые действия</div>
-                            <div class="actions-grid">
-                                <div class="action-card" onclick="openAddTopicDialog()">
-                                    <div class="action-icon" style="background:var(--green-bg)">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        <!-- Quick Actions -->
+                        <article class="widget widget--actions reveal" aria-label="Быстрые действия">
+                            <h2 class="widget__title">Быстрые действия</h2>
+                            <div class="actions">
+                                <button class="action" onclick="openAddTopicDialog()" aria-label="Создать новую тему">
+                                    <div class="action__icon action__icon--green" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                                     </div>
-                                    <div class="action-name">Новая тема</div>
-                                    <div class="action-desc">Добавить для изучения</div>
-                                </div>
-                                <div class="action-card" onclick="showScreen('posts')">
-                                    <div class="action-icon" style="background:var(--blue-bg)">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                                    <div class="action__text">
+                                        <div class="action__name">Новая тема</div>
+                                        <div class="action__desc">Добавить для изучения</div>
                                     </div>
-                                    <div class="action-name">Читать методику</div>
-                                    <div class="action-desc">7 статей об обучении</div>
-                                </div>
-                                <div class="action-card" onclick="showScreen('stats')">
-                                    <div class="action-icon" style="background:var(--yellow-bg)">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                                </button>
+                                <button class="action" onclick="showScreen('posts')" aria-label="Читать методику обучения">
+                                    <div class="action__icon action__icon--blue" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
                                     </div>
-                                    <div class="action-name">Статистика</div>
-                                    <div class="action-desc">Посмотреть прогресс</div>
-                                </div>
-                                <div class="action-card" onclick="exportData()">
-                                    <div class="action-icon" style="background:var(--coral-bg)">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    <div class="action__text">
+                                        <div class="action__name">Читать методику</div>
+                                        <div class="action__desc">7 статей об обучении</div>
                                     </div>
-                                    <div class="action-name">Экспорт</div>
-                                    <div class="action-desc">Скачать данные</div>
-                                </div>
+                                </button>
+                                <button class="action" onclick="showScreen('stats')" aria-label="Посмотреть статистику">
+                                    <div class="action__icon action__icon--yellow" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                                    </div>
+                                    <div class="action__text">
+                                        <div class="action__name">Статистика</div>
+                                        <div class="action__desc">Посмотреть прогресс</div>
+                                    </div>
+                                </button>
+                                <button class="action" onclick="exportData()" aria-label="Экспортировать данные">
+                                    <div class="action__icon action__icon--coral" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    </div>
+                                    <div class="action__text">
+                                        <div class="action__name">Экспорт</div>
+                                        <div class="action__desc">Скачать данные</div>
+                                    </div>
+                                </button>
                             </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Topics -->
+                <section id="screen-topics" class="screen" aria-label="Мои темы">
+                    <header class="page-header">
+                        <div class="page-header__left">
+                            <h2 class="page-header__title">Мои темы</h2>
+                            <p class="page-header__subtitle" id="topics-subtitle">0 тем</p>
                         </div>
+                        <button class="btn btn--primary" onclick="openAddTopicDialog()" aria-label="Добавить тему">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Добавить тему
+                        </button>
+                    </header>
+                    <div class="filter" id="topic-chips" role="group" aria-label="Фильтр по категориям"></div>
+                    <div id="topics-list" class="topics" role="list"></div>
+                    <div id="empty-topics" class="empty" role="status" style="display:none">
+                        <svg class="empty__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                            <circle cx="32" cy="32" r="32" fill="#f0ebe3"/>
+                            <rect x="18" y="20" width="28" height="24" rx="4" stroke="#c4b9a8" stroke-width="2" stroke-dasharray="4 4"/>
+                            <line x1="32" y1="27" x2="32" y2="37" stroke="#c4b9a8" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="27" y1="32" x2="37" y2="32" stroke="#c4b9a8" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <p class="empty__title">Нет тем для повторения</p>
+                        <span class="empty__text">Создайте первую тему и начните учиться</span>
                     </div>
                 </section>
 
-                <section id="screen-topics" class="screen">
-                    <div class="page-head">
-                        <div><h2 class="page-title">Мои темы</h2><p class="page-sub" id="topics-subtitle">0 тем</p></div>
-                        <button class="btn-primary" onclick="openAddTopicDialog()">+ Добавить тему</button>
-                    </div>
-                    <div class="filter-row" id="topic-chips"></div>
-                    <div id="topics-list" class="topics-grid"></div>
-                    <div id="empty-topics" class="empty-state" style="display:none">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="32" fill="#f0ebe3"/><rect x="18" y="20" width="28" height="24" rx="4" stroke="#c4b9a8" stroke-width="2" stroke-dasharray="4 4"/><line x1="32" y1="27" x2="32" y2="37" stroke="#c4b9a8" stroke-width="2" stroke-linecap="round"/><line x1="27" y1="32" x2="37" y2="32" stroke="#c4b9a8" stroke-width="2" stroke-linecap="round"/></svg>
-                        <p>Нет тем для повторения</p>
-                        <span>Создайте первую тему и начните учиться</span>
-                    </div>
+                <!-- Posts -->
+                <section id="screen-posts" class="screen" aria-label="Обучение">
+                    <header class="page-header">
+                        <div class="page-header__left">
+                            <h2 class="page-header__title">Обучение</h2>
+                            <p class="page-header__subtitle">Методы эффективного запоминания</p>
+                        </div>
+                    </header>
+                    <div class="filter" id="post-chips" role="group" aria-label="Фильтр по категориям"></div>
+                    <div id="posts-list" class="posts" role="list"></div>
                 </section>
 
-                <section id="screen-posts" class="screen">
-                    <div class="page-head"><div><h2 class="page-title">Обучение</h2><p class="page-sub">Методы эффективного запоминания</p></div></div>
-                    <div class="filter-row" id="post-chips"></div>
-                    <div id="posts-list" class="posts-grid"></div>
-                </section>
-
-                <section id="screen-post-detail" class="screen">
-                    <button class="btn-back" onclick="showScreen('posts')">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                <!-- Post Detail -->
+                <section id="screen-post-detail" class="screen" aria-label="Статья">
+                    <button class="btn btn--back" onclick="showScreen('posts')" aria-label="Назад к списку статей">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
                         Назад
                     </button>
-                    <div id="post-detail-content"></div>
+                    <div id="post-detail-content" class="post-detail"></div>
                 </section>
 
-                <section id="screen-stats" class="screen">
-                    <div class="page-head"><div><h2 class="page-title">Статистика</h2><p class="page-sub">Ваш прогресс обучения</p></div></div>
-                    <div class="stats-layout" id="stats-layout"></div>
+                <!-- Stats -->
+                <section id="screen-stats" class="screen" aria-label="Статистика">
+                    <header class="page-header">
+                        <div class="page-header__left">
+                            <h2 class="page-header__title">Статистика</h2>
+                            <p class="page-header__subtitle">Ваш прогресс обучения</p>
+                        </div>
+                    </header>
+                    <div class="stats" id="stats-layout"></div>
                 </section>
 
-                <section id="screen-settings" class="screen">
-                    <div class="page-head"><div><h2 class="page-title">Настройки</h2><p class="page-sub">Управление данными</p></div></div>
-                    <div class="settings-card">
-                        <div class="set-row"><div class="set-info"><div class="set-label">Уведомления</div><div class="set-desc">Ежедневные напоминания в 8:00</div></div><label class="sw"><input type="checkbox" id="notif-toggle"><span class="sw-track"><span class="sw-thumb"></span></span></label></div>
-                        <div class="set-sep"></div>
-                        <div class="set-row clickable" onclick="exportData()"><div class="set-info"><div class="set-label">Экспорт данных</div><div class="set-desc">Скачать все темы в JSON</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A7E6B" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
-                        <div class="set-sep"></div>
-                        <div class="set-row clickable" onclick="document.getElementById('import-input').click()"><div class="set-info"><div class="set-label">Импорт данных</div><div class="set-desc">Загрузить темы из JSON-файла</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A7E6B" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
-                        <input type="file" id="import-input" accept=".json" style="display:none" onchange="importData(event)">
-                        <div class="set-sep"></div>
-                        <div class="set-row clickable danger" onclick="clearAllData()"><div class="set-info"><div class="set-label">Очистить все данные</div><div class="set-desc">Удалить темы безвозвратно</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></div>
+                <!-- Settings -->
+                <section id="screen-settings" class="screen" aria-label="Настройки">
+                    <header class="page-header">
+                        <div class="page-header__left">
+                            <h2 class="page-header__title">Настройки</h2>
+                            <p class="page-header__subtitle">Управление данными</p>
+                        </div>
+                    </header>
+                    <div class="settings" role="group">
+                        <div class="settings__item">
+                            <div class="settings__info">
+                                <div class="settings__label">Уведомления</div>
+                                <div class="settings__desc">Ежедневные напоминания в 8:00</div>
+                            </div>
+                            <label class="toggle" aria-label="Переключатель уведомлений">
+                                <input type="checkbox" id="notif-toggle" class="toggle__input">
+                                <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                            </label>
+                        </div>
+                        <div class="settings__divider" aria-hidden="true"></div>
+                        <button class="settings__item settings__item--clickable" onclick="exportData()" aria-label="Экспортировать данные в JSON">
+                            <div class="settings__info">
+                                <div class="settings__label">Экспорт данных</div>
+                                <div class="settings__desc">Скачать все темы в JSON</div>
+                            </div>
+                            <svg class="settings__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </button>
+                        <div class="settings__divider" aria-hidden="true"></div>
+                        <button class="settings__item settings__item--clickable" onclick="document.getElementById('import-input').click()" aria-label="Импортировать данные из JSON">
+                            <div class="settings__info">
+                                <div class="settings__label">Импорт данных</div>
+                                <div class="settings__desc">Загрузить темы из JSON-файла</div>
+                            </div>
+                            <svg class="settings__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </button>
+                        <input type="file" id="import-input" accept=".json" class="visually-hidden" onchange="importData(event)">
+                        <div class="settings__divider" aria-hidden="true"></div>
+                        <button class="settings__item settings__item--clickable settings__item--danger" onclick="clearAllData()" aria-label="Удалить все данные безвозвратно">
+                            <div class="settings__info">
+                                <div class="settings__label">Очистить все данные</div>
+                                <div class="settings__desc">Удалить темы безвозвратно</div>
+                            </div>
+                            <svg class="settings__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                        </button>
                     </div>
                 </section>
 
@@ -206,20 +292,21 @@
         </main>
     </div>
 
-    <div class="modal-overlay" id="modal-overlay" onclick="closeModal()"></div>
-    <div class="modal" id="add-topic-modal">
-        <h3>Новая тема</h3>
-        <input type="text" id="topic-title-input" placeholder="Название темы..." autocomplete="off">
-        <div class="modal-chips" id="modal-category-chips"></div>
-        <div class="modal-actions">
-            <button class="btn-ghost" onclick="closeModal()">Отмена</button>
-            <button class="btn-primary" onclick="saveTopic()">Сохранить</button>
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay" aria-hidden="true"></div>
+    <dialog class="modal" id="add-topic-modal" aria-label="Добавить новую тему" role="dialog">
+        <h3 class="modal__title">Новая тема</h3>
+        <input class="modal__input" type="text" id="topic-title-input" placeholder="Название темы..." autocomplete="off" aria-label="Название темы">
+        <div class="modal__chips" id="modal-category-chips" role="group" aria-label="Выберите категорию"></div>
+        <div class="modal__actions">
+            <button class="btn btn--ghost" onclick="closeModal()" type="button">Отмена</button>
+            <button class="btn btn--primary" onclick="saveTopic()" type="button">Сохранить</button>
         </div>
-    </div>
-    <div class="toast" id="toast"></div>
+    </dialog>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
     <script src="app.js"></script>
 </body>
 </html>
-
-
-

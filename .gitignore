@@ -1,3 +1,5 @@
 .env
 .gg
 node_modules/
+
+.vercel
